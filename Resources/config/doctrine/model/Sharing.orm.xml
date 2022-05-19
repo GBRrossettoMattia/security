@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+
+    <mapped-superclass name="Fxp\Component\Security\Model\Sharing">
+
+        <indexes>
+            <index name="subject_class_idx" columns="subject_class"/>
+            <index name="subject_id_idx" columns="subject_id"/>
+            <index name="identity_class_idx" columns="identity_class"/>
+            <index name="identity_name_idx" columns="identity_name"/>
+        </indexes>
+
+        <unique-constraints>
+            <unique-constraint columns="subject_class,subject_id,identity_class,identity_name" name="unique_sharing_idx" />
+        </unique-constraints>
+
+        <field name="subjectClass" column="subject_class" type="string" length="244" />
+
+        <field name="subjectId" column="subject_id" type="string" length="36" />
+
+        <field name="identityClass" column="identity_class" type="string" length="244" />
+
+        <field name="identityName" column="identity_name" type="string" length="244" />
+
+        <field name="enabled" column="enabled" type="boolean" />
+
+        <field name="roles" column="roles" type="array" />
+
+        <field name="startedAt" column="started_at" type="datetime" nullable="true" />
+
+        <field name="endedAt" column="ended_at" type="datetime" nullable="true" />
+
+    </mapped-superclass>
+
+</doctrine-mapping>

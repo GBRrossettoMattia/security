@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+
+    <mapped-superclass name="Fxp\Component\Security\Model\Permission">
+
+        <indexes>
+            <index name="operation_idx" columns="operation"/>
+            <index name="class_idx" columns="class"/>
+            <index name="field_idx" columns="field"/>
+        </indexes>
+
+        <unique-constraints>
+            <unique-constraint columns="operation,class,field" name="unique_permission_idx" />
+        </unique-constraints>
+
+        <field name="operation" column="operation" type="string" length="255" />
+
+        <field name="contexts" column="contexts" type="array" />
+
+        <field name="class" column="class" type="string" length="255" nullable="true" />
+
+        <field name="field" column="field" type="string" length="255" nullable="true" />
+
+    </mapped-superclass>
+
+</doctrine-mapping>
